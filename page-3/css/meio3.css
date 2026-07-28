@@ -1,0 +1,76 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif; /* Use a fonte oficial se tiver */
+}
+
+body {
+    background-color: #f9f9f9;
+}
+
+.banner {
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Evita que o braço crie barra de rolagem */
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.logo img {
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #ffffff;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.mockup {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mockup img {
+    max-width: 450px; /* Ajuste conforme o tamanho da sua imagem */
+    height: auto;
+    /* Efeito de inclinação se a imagem for reta */
+    transform: rotate(-5deg); 
+}
+
+/* Responsividade para celular */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .mockup {
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .mockup img {
+        max-width: 300px;
+    }
+}

@@ -1,0 +1,57 @@
+body {
+  background-color: #0a0a0a; /* Fundo escuro */
+  color: white;
+  font-family: sans-serif;
+}
+
+.founders-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.founders-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Para funcionar no celular */
+  gap: 30px;
+}
+
+.founder-card {
+  width: 250px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Mantém a foto quadrada */
+  object-fit: cover;
+  border-radius: 20px; /* Bordas arredondadas como na imagem */
+  background-color: #333;
+}
+
+.founder-card h3 {
+  margin: 15px 0 5px;
+  font-size: 1.2rem;
+}
+
+.founder-card p {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.founders-info {
+  max-width: 300px;
+  text-align: left;
+  padding-top: 20px;
+}
+
+.purple-text {
+  color: #8a2be2; /* Roxo similar ao da imagem */
+  margin-bottom: 10px;
+}

@@ -1,0 +1,208 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+
+/* ==========================================================================
+   RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: #15141d;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-container {
+    max-width: 1250px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transform: translateY(-50px);
+}
+
+/* ==========================================================================
+   CONTEÚDO
+   ========================================================================== */
+.hero-content h1 {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: #e0e0e0;
+    margin-bottom: 40px;
+    max-width: 520px;
+}
+
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #3b66f5 0%, #6e40ef 100%);
+    color: #ffffff;
+    padding: 18px 38px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(59, 102, 245, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(59, 102, 245, 0.6);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #ffffff;
+    padding: 17px 38px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   IMAGEM
+   ========================================================================== */
+.hero-image img {
+    max-width: 550px;
+    height: auto;
+    filter: drop-shadow(0 0 50px rgba(59, 102, 245, 0.2));
+    animation: respiro 4s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   ANIMAÇÃO
+   ========================================================================== */
+@keyframes respiro {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(1.03);
+        filter: brightness(1.15);
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVO — TABLET
+   ========================================================================== */
+@media (max-width: 900px) {
+
+    .hero-container {
+        padding: 0 30px;
+        transform: translateY(-30px);
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .hero-image img {
+        max-width: 420px;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVO — MOBILE PADRÃO (até 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+
+    .hero {
+        min-height: auto;
+        padding: 90px 0 60px;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 34px;
+        transform: none;
+        padding: 0 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+        letter-spacing: -1px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+        margin-bottom: 26px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 14px 32px;
+        font-size: 14px;
+    }
+
+    .hero-image img {
+        max-width: 260px;
+    }
+}
+
+/* ==========================================================================
+   MOBILE PEQUENO (360px / iPhone SE / Android compacto)
+   ========================================================================== */
+@media (max-width: 360px) {
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .hero-image img {
+        max-width: 230px;
+    }
+}

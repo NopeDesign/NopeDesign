@@ -1,0 +1,49 @@
+/* 1. Reset padrão */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. O Footer - Ajustado para não "comer" o design acima */
+.main-footer {
+    background-color: #000000;
+    /* O padding-top maior garante que o texto saia da zona de divisão */
+    padding: 100px 20px 60px 20px; 
+    text-align: center;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    width: 100%;
+    display: block;
+    clear: both; /* Garante que nada flutue ao lado dele */
+}
+
+/* 3. Container do Texto */
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre as linhas */
+}
+
+/* 4. Estilo dos Créditos */
+.footer-credits {
+    color: #666666; 
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.footer-credits p {
+    margin: 0;
+}
+
+/* 5. Link do Designer */
+.designer-name {
+    color: #4B179B;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.designer-name:hover {
+    text-decoration: underline;
+}

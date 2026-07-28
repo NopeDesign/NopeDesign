@@ -1,0 +1,86 @@
+:root {
+    --bg-color: #050508;
+    --accent-color: #4f7cff; /* Azul da sua identidade */
+    --text-muted: #a1a1aa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    overflow: hidden;
+}
+
+.loader-wrapper {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Tipografia Estilizada */
+.loader-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 80px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    filter: blur(5px);
+    animation: revealBlur 1.5s forwards ease-out;
+}
+
+@keyframes revealBlur {
+    to { filter: blur(0); letter-spacing: 5px; }
+}
+
+/* Barra de Progresso Minimalista */
+.progress-container {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--accent-color));
+    box-shadow: 0 0 15px var(--accent-color);
+    transition: width 0.4s cubic-bezier(0.1, 0.7, 1.0, 0.1);
+}
+
+/* Status e Porcentagem */
+.loader-status {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Saída da tela animada */
+.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s all ease-in-out;
+    transform: scale(1.1);
+}
