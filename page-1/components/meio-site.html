@@ -1,28 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO: Adicionada a meta description (fundamental para o Google) -->
+    <meta name="description" content="A NOPE transforma ideias em identidade visual. Design criativo e estratégia para posicionar marcas e gerar resultados.">
     <title>NOPE - Design Criativo</title>
+
+    <!-- Opcional: Pré-carregamento para Google Fonts (exemplo com Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Seu CSS principal -->
     <link rel="stylesheet" href="css/meio-1.css">
 </head>
 <body>
 
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Transformamos ideias em identidade visual</h1>
-                <p>Design criativo e estratégia para posicionar marcas e gerar resultados.</p>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/5511972527752?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento"" class="btn-primary">Solicitar Orçamento</a>
-                    <a href="/nope/page-4/page-4.html" class="btn-secondary">Portfólio</a>
+    <!-- A tag <main> melhora a semântica e a acessibilidade da página -->
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-container">
+                
+                <div class="hero-content">
+                    <h1 id="hero-title">Transformamos ideias em identidade visual</h1>
+                    <p>Design criativo e estratégia para posicionar marcas e gerar resultados.</p>
+                    
+                    <div class="hero-buttons">
+                        <!-- Correção de erro (haviam aspas duplas no final do link), adição de target="_blank", rel="noopener noreferrer" e aria-label -->
+                        <a href="https://wa.me/5511972527752?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="btn btn-primary"
+                           aria-label="Solicitar Orçamento via WhatsApp">
+                           Solicitar Orçamento
+                        </a>
+                        <a href="/nope/page-4/page-4.html" class="btn btn-secondary">Portfólio</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="hero-image">
-                <img src="src/imagem-central.png" alt="Ilustração 3D NOPE">
+                <div class="hero-image">
+                    <!-- Adição de width/height ajuda a evitar o Cumulative Layout Shift (CLS), melhorando o score no Google PageSpeed -->
+                    <img src="src/imagem-central.png" 
+                         alt="Ilustração 3D com o logotipo da agência NOPE" 
+                         width="600" 
+                         height="600">
+                </div>
+                
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
 </body>
 </html>

@@ -1,208 +1,237 @@
-
-
-
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 /* ==========================================================================
-   RESET
+   VARIÁVEIS GLOBAIS (Design Tokens)
+   ========================================================================== */
+:root {
+    /* Cores */
+    --clr-bg: #15141d;
+    --clr-text-main: #ffffff;
+    --clr-text-muted: #e0e0e0;
+    --clr-primary: #3b66f5;
+    --clr-primary-dark: #2a4ac4;
+    --clr-secondary: #6e40ef;
+    
+    /* Gradientes */
+    --grad-primary: linear-gradient(90deg, var(--clr-primary) 0%, var(--clr-secondary) 100%);
+    
+    /* Sombras */
+    --shadow-btn: 0 10px 25px rgba(59, 102, 245, 0.3);
+    --shadow-btn-hover: 0 15px 35px rgba(59, 102, 245, 0.5);
+    --shadow-image: 0 0 50px rgba(59, 102, 245, 0.15);
+
+    /* Transições */
+    --transition-base: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* Espaçamentos e Layout */
+    --container-max-width: 1250px;
+    --container-padding: clamp(1.25rem, 5vw, 3.125rem); /* 20px no mobile a 50px no desktop */
+}
+
+/* ==========================================================================
+   RESET & BASE
    ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    background-color: #15141d;
-    color: #ffffff;
+    background-color: var(--clr-bg);
+    color: var(--clr-text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
+    line-height: 1.5;
+}
+
+/* Acessibilidade: Outline visível apenas para navegação por teclado */
+:focus-visible {
+    outline: 2px dashed var(--clr-primary);
+    outline-offset: 4px;
 }
 
 /* ==========================================================================
-   HERO
+   HERO SECTION
    ========================================================================== */
 .hero {
     width: 100%;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* Usa 'svh' para respeitar a barra de navegação de celulares modernos */
+    min-height: clamp(600px, 100svh, 900px); 
+    display: grid;
+    place-items: center;
+    position: relative;
 }
 
 .hero-container {
-    max-width: 1250px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 50px;
+    width: min(100%, var(--container-max-width));
+    padding-inline: var(--container-padding);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    transform: translateY(-50px);
+    gap: clamp(2rem, 5vw, 4rem); /* Espaço responsivo entre texto e imagem */
+    /* Removido o translate fixo, grid/flex centralizam de forma mais segura */
 }
 
 /* ==========================================================================
-   CONTEÚDO
+   CONTEÚDO (Texto)
    ========================================================================== */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 580px;
+}
+
 .hero-content h1 {
-    font-size: 64px;
+    /* Tipografia Fluida: Cresce de 32px (mobile) até 64px (desktop) automaticamente */
+    font-size: clamp(2rem, 4vw + 1rem, 4rem);
     font-weight: 700;
     line-height: 1.1;
-    margin-bottom: 25px;
-    letter-spacing: -2px;
+    letter-spacing: -0.03em;
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
 
 .hero-content p {
-    font-size: 18px;
-    color: #e0e0e0;
-    margin-bottom: 40px;
-    max-width: 520px;
+    /* Tipografia Fluida: 15px (mobile) até 18px (desktop) */
+    font-size: clamp(0.9375rem, 1.5vw + 0.5rem, 1.125rem);
+    color: var(--clr-text-muted);
+    margin-bottom: clamp(2rem, 4vw, 2.5rem);
+    max-width: 90%;
 }
 
 /* ==========================================================================
-   BOTÕES
+   BOTÕES (Padrão de UI moderno)
    ========================================================================== */
 .hero-buttons {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap; /* Permite quebrar linha em telas super pequenas */
+    gap: 1rem;
 }
 
-.btn-primary {
-    background: linear-gradient(90deg, #3b66f5 0%, #6e40ef 100%);
-    color: #ffffff;
-    padding: 18px 38px;
+/* Classe base para todos os botões */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.125rem 2.25rem;
     border-radius: 100px;
-    text-decoration: none;
     font-weight: 600;
-    box-shadow: 0 10px 25px rgba(59, 102, 245, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    /* Garante área de toque mínima exigida por regras de UX Mobile (44px) */
+    min-height: 48px; 
+}
+
+/* Modificadores */
+.btn-primary {
+    background: var(--grad-primary);
+    color: var(--clr-text-main);
+    border: none;
+    box-shadow: var(--shadow-btn);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(59, 102, 245, 0.6);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-btn-hover);
+    filter: brightness(1.1);
 }
 
 .btn-secondary {
-    border: 1px solid rgba(255,255,255,0.3);
-    color: #ffffff;
-    padding: 17px 38px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: background 0.3s ease;
+    background: transparent;
+    color: var(--clr-text-main);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* ==========================================================================
-   IMAGEM
+   IMAGEM E ANIMAÇÃO
    ========================================================================== */
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .hero-image img {
-    max-width: 550px;
+    width: 100%;
+    /* Tamanho fluido: min 280px, ideal 40vw, máx 550px */
+    max-width: clamp(280px, 40vw, 550px);
     height: auto;
-    filter: drop-shadow(0 0 50px rgba(59, 102, 245, 0.2));
-    animation: respiro 4s ease-in-out infinite;
+    filter: drop-shadow(var(--shadow-image));
+    animation: respiro 5s ease-in-out infinite;
+    /* Hardware acceleration: Garante 60fps no mobile */
+    will-change: transform, filter; 
 }
 
-/* ==========================================================================
-   ANIMAÇÃO
-   ========================================================================== */
 @keyframes respiro {
     0%, 100% {
-        transform: scale(1);
-        filter: brightness(1);
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(var(--shadow-image)) brightness(1);
     }
     50% {
-        transform: scale(1.03);
-        filter: brightness(1.15);
+        transform: translateY(-15px) scale(1.02);
+        filter: drop-shadow(0 0 70px rgba(59, 102, 245, 0.3)) brightness(1.1);
     }
 }
 
 /* ==========================================================================
-   RESPONSIVO — TABLET
+   RESPONSIVO (Media Queries)
+   * Como usamos clamp() e flex-wrap, precisamos de poucas media queries!
    ========================================================================== */
-@media (max-width: 900px) {
 
-    .hero-container {
-        padding: 0 30px;
-        transform: translateY(-30px);
-    }
-
-    .hero-content h1 {
-        font-size: 48px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-    }
-
-    .hero-image img {
-        max-width: 420px;
-    }
-}
-
-/* ==========================================================================
-   RESPONSIVO — MOBILE PADRÃO (até 480px)
-   ========================================================================== */
-@media (max-width: 480px) {
-
-    .hero {
-        min-height: auto;
-        padding: 90px 0 60px;
-    }
-
+/* Tablet (768px a 992px) */
+@media (max-width: 992px) {
     .hero-container {
         flex-direction: column;
         text-align: center;
-        gap: 34px;
-        transform: none;
-        padding: 0 20px;
+        margin-top: 2rem;
     }
 
-    .hero-content h1 {
-        font-size: 36px;
-        letter-spacing: -1px;
+    .hero-content {
+        align-items: center;
+        max-width: 650px;
     }
 
     .hero-content p {
-        font-size: 15px;
-        margin-bottom: 26px;
+        max-width: 100%;
     }
 
     .hero-buttons {
-        flex-direction: column;
-        gap: 14px;
-        align-items: center;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-        padding: 14px 32px;
-        font-size: 14px;
-    }
-
-    .hero-image img {
-        max-width: 260px;
+        justify-content: center;
     }
 }
 
-/* ==========================================================================
-   MOBILE PEQUENO (360px / iPhone SE / Android compacto)
-   ========================================================================== */
-@media (max-width: 360px) {
-
-    .hero-content h1 {
-        font-size: 32px;
+/* Mobile (Até 768px) */
+@media (max-width: 768px) {
+    .hero {
+        padding-block: 4rem 2rem; /* Adiciona respiro superior e inferior no mobile */
     }
 
-    .hero-content p {
-        font-size: 14px;
+    .hero-buttons {
+        width: 100%;
+        flex-direction: column;
     }
 
-    .hero-image img {
-        max-width: 230px;
+    .btn {
+        width: 100%; /* Botões ocupam 100% da tela no celular, mais fácil para clicar */
+    }
+    
+    @keyframes respiro {
+        /* Reduz a intensidade da animação no mobile para não parecer estranho */
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
     }
 }
