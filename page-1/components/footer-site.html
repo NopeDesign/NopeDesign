@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Consistência de Design: Mantendo a mesma fonte do resto do site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/footer-1.css">
-    <title>Footer</title>
+    <title>Footer | NOPE Design</title>
 </head>
 <body>
 
-    <footer class="main-footer">
+    <!-- Acessibilidade: role="contentinfo" garante que leitores de tela identifiquem esta área como o rodapé principal -->
+    <footer class="main-footer" role="contentinfo">
         <div class="footer-container">
+            
             <div class="footer-credits">
-                <p>© 2024 Nope Design. Todos os direitos reservados.</p>
-                <p>Design por <a href="/nope/page-1/page-1.html" class="designer-name">Nope Design</a></p>
+                <!-- Semântica: A tag <small> é a forma correta no HTML5 para textos legais, direitos autorais e copyright -->
+                <small>© 2026 NOPE Design. Todos os direitos reservados.</small>
+                
+                <small>Design por 
+                    <!-- Semântica: rel="author" indica aos motores de busca que este link aponta para o criador da página -->
+                    <a href="/nope/page-1/page-1.html" class="designer-name" rel="author">NOPE Design</a>
+                </small>
             </div>
+            
         </div>
     </footer>
 

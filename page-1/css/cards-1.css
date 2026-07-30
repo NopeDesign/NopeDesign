@@ -1,14 +1,43 @@
 /* ============================================================
+   VARIÁVEIS (DESIGN TOKENS)
+   ============================================================ */
+:root {
+    --bg-body: #060607;
+    --bg-card: #121214;
+    --bg-card-hover: #18181b;
+    --border-card: #1c1c1e;
+    --border-card-hover: #2c2c2e;
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+    
+    --accent-rgb: 79, 172, 254; 
+    --accent-color: rgb(var(--accent-rgb));
+    
+    --font-main: 'Inter', sans-serif;
+    --transition-speed: 0.4s;
+    --radius-card: 24px;
+}
+
+/* ============================================================
+   RESET BÁSICO
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================================
    CONFIGURAÇÃO GERAL DA SEÇÃO
    ============================================================ */
 .services-section {
-    background-color: #060607;
-    padding: 130px 20px;
+    background-color: var(--bg-body);
+    padding: 8rem 1.25rem;
     text-align: center;
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    font-family: var(--font-main);
     position: relative;
-    overflow: visible;
+    overflow: hidden; /* Evita rolagem horizontal acidental no mobile */
 }
 
 .services-section::before,
@@ -17,115 +46,125 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 90px;
+    height: 5.625rem;
     pointer-events: none;
 }
 
 .services-section::before {
     top: 0;
-    transform: translateY(-90px);
+    transform: translateY(-100%);
     background: linear-gradient(
         180deg,
         rgba(255, 255, 255, 0.12) 0%,
         rgba(20, 20, 24, 0.55) 45%,
-        rgba(0, 0, 0, 0) 100%
+        transparent 100%
     );
     box-shadow: 0 30px 35px rgba(0, 0, 0, 0.7);
 }
 
 .services-section::after {
     bottom: 0;
-    transform: translateY(90px);
+    transform: translateY(100%);
     background: linear-gradient(
         0deg,
         rgba(255, 255, 255, 0.1) 0%,
         rgba(18, 18, 22, 0.6) 50%,
-        rgba(0, 0, 0, 0) 100%
+        transparent 100%
     );
     box-shadow: 0 -30px 35px rgba(0, 0, 0, 0.7);
 }
 
 .main-title {
-    font-size: 2.5rem;
-    font-weight: 500;
-    margin-bottom: 5px;
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
+/* Largura ajustada para não "estourar" telas muito pequenas */
 .glow-line {
-    width: 250px;
+    width: 100%;
+    max-width: 250px; 
     height: 2px;
-    margin: 0 auto 60px auto;
-    background: radial-gradient(circle, #4facfe 0%, rgba(79, 172, 254, 0) 80%);
-    box-shadow: 0px 0px 15px 2px rgba(79, 172, 254, 0.8);
+    margin: 0 auto 3.75rem auto;
+    background: radial-gradient(circle, var(--accent-color) 0%, rgba(var(--accent-rgb), 0) 80%);
+    box-shadow: 0px 0px 15px 2px rgba(var(--accent-rgb), 0.8);
 }
 
 /* ============================================================
-   CONTAINER E CARDS (FORMATO IMAGEM 1)
+   CONTAINER E CARDS
    ============================================================ */
 .cards-container {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 20px;
+    gap: 1.25rem;
     max-width: 1000px;
     margin: 0 auto;
 }
 
-/* Ajuste no card para suportar o link interno */
 .service-card {
-    background: #121214; 
-    border: 1px solid #1c1c1e;
-    border-radius: 24px;
-    padding: 0; /* Removido o padding daqui para o link ocupar tudo */
+    background-color: var(--bg-card); 
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-card);
     flex: 1;
-    transition: all 0.4s ease;
-    overflow: hidden; /* Garante que nada saia das bordas arredondadas */
+    overflow: hidden;
+    transition: transform var(--transition-speed) ease,
+                background-color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease;
 }
 
-/* ESTILO DO LINK (O segredo para ficar clicável) */
 .card-link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 30px; /* O padding agora fica no link */
-    text-decoration: none; /* Remove sublinhado */
-    color: inherit; /* Mantém a cor do texto */
+    padding: 3.125rem 1.875rem;
+    text-decoration: none;
+    color: inherit;
     width: 100%;
     height: 100%;
+    outline: none;
 }
 
-.service-card:hover {
-    background: #18181b;
-    border-color: #2c2c2e;
+.service-card:hover,
+.service-card:focus-within {
+    background-color: var(--bg-card-hover);
+    border-color: var(--border-card-hover);
     transform: translateY(-8px);
 }
 
+.card-link:focus-visible {
+    border-radius: var(--radius-card);
+    box-shadow: inset 0 0 0 2px var(--accent-color);
+}
+
 /* ============================================================
-   ÍCONES GIGANTES (ESTILO IMAGEM 2)
+   ÍCONES GIGANTES (Proporção Comercial)
    ============================================================ */
 .icon-box {
-    width: 100%; /* Ajustado para ser responsivo dentro do card */
+    width: 100%;
     max-width: 300px;
-    height: 150px; 
+    /* Substitui a altura fixa por uma proporção de anúncio padrão */
+    aspect-ratio: 1.91 / 1; 
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
-    position: relative;
+    margin-bottom: 1.875rem;
 }
 
 .icon-box img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(79, 172, 254, 0.4));
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 10px 20px rgba(var(--accent-rgb), 0.4));
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                filter 0.5s ease;
+    will-change: transform, filter;
 }
 
-/* Faz a imagem crescer quando passa o mouse no card */
-.service-card:hover .icon-box img {
+.service-card:hover .icon-box img,
+.card-link:focus-visible .icon-box img {
     transform: scale(1.1) translateY(-10px);
-    filter: drop-shadow(0 15px 35px rgba(79, 172, 254, 0.7));
+    filter: drop-shadow(0 15px 35px rgba(var(--accent-rgb), 0.7));
 }
 
 /* ============================================================
@@ -134,20 +173,21 @@
 .service-card h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 15px;
-    color: #ffffff;
+    margin-bottom: 1rem;
+    color: var(--text-main);
 }
 
 .service-card p {
     font-size: 1rem;
-    color: #a1a1aa;
+    color: var(--text-muted);
     line-height: 1.5;
-    margin: 0;
 }
 
 /* ============================================================
-   RESPONSIVIDADE
+   RESPONSIVIDADE EXTREMA (Múltiplos Breakpoints)
    ============================================================ */
+
+/* Tablets em pé e Notebooks pequenos */
 @media (max-width: 900px) {
     .cards-container {
         flex-direction: column;
@@ -155,6 +195,43 @@
     }
     .service-card {
         width: 100%;
-        max-width: 350px;
+        max-width: 500px;
+    }
+    .services-section {
+        padding: 5rem 1.25rem; /* Reduz o espaço exagerado no topo/baixo */
+    }
+    /* Zera a animação de subir o card no toque do celular para evitar engasgos, 
+       mas mantém o efeito na imagem. */
+    .service-card:hover {
+        transform: translateY(0);
+    }
+}
+
+/* Smartphones padrão (iPhone 13/14/15, Galaxy S) */
+@media (max-width: 600px) {
+    .services-section {
+        padding: 4rem 1rem; 
+    }
+    .card-link {
+        padding: 2.5rem 1.5rem; /* Reduz o padding interno do card */
+    }
+    .icon-box {
+        margin-bottom: 1.25rem;
+    }
+}
+
+/* Smartphones muito estreitos (iPhone SE, Galaxy Fold dobrado) */
+@media (max-width: 380px) {
+    .main-title {
+        font-size: 1.75rem; 
+    }
+    .card-link {
+        padding: 1.875rem 1rem; /* Cards mais enxutos para otimizar espaço da tela */
+    }
+    .service-card h3 {
+        font-size: 1.25rem; /* Título do serviço menor para não quebrar em 3 linhas */
+    }
+    .service-card p {
+        font-size: 0.95rem;
     }
 }

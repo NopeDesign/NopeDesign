@@ -1,53 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page - NOPE</title>
     
-    <link rel="stylesheet" href="css/cards-1.css">
+    <!-- SEO: Meta description é essencial para indexação e exibição no Google -->
+    <meta name="description" content="A NOPE dá vida às suas ideias com serviços de Identidade Visual, Gestão de Redes Sociais e Marketing Estratégico.">
     
+    <!-- SEO: Títulos mais atrativos e descritivos funcionam melhor -->
+    <title>NOPE | Damos vida às suas ideias</title>
+    
+    <!-- Performance: Preconnect acelera o carregamento de fontes externas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Boas práticas: Estrutura de pastas mais padronizada -->
+    <link rel="stylesheet" href="css/cards-1.css">
 </head>
 <body>
 
-    <section class="services-section">
-        <h2 class="main-title">Damos vida às suas ideias.</h2>
-        <div class="glow-line"></div>
-
-        <div class="cards-container">
+    <!-- Semântica: Envolver o conteúdo principal na tag <main> -->
+    <main>
+        
+        <!-- Acessibilidade: Associando o título principal à seção para leitores de tela -->
+        <section class="services-section" aria-labelledby="services-title">
+            <h2 id="services-title" class="main-title">Damos vida às suas ideias.</h2>
             
-            <div class="service-card">
-                <a href="/nope/page-3/page-3.html" class="card-link">
-                    <div class="icon-box">
-                        <img src="src/bt-identidade-visual.png" alt="Identidade Visual">
-                    </div>
-                    <h3>Identidade Visual</h3>
-                    <p>Criação de logos e marcas memoráveis</p>
-                </a>
-            </div>
+            <!-- Acessibilidade: Ocultando elementos puramente visuais de leitores de tela -->
+            <div class="glow-line" aria-hidden="true"></div>
 
-            <div class="service-card">
-                <a href="/nope/page-3/page-3.html" class="card-link">
-                    <div class="icon-box">
-                        <img src="src/bt-Gestão-de-Redes-Sociais.png" alt="Redes Sociais">
-                    </div>
-                    <h3>Gestão de Redes Sociais</h3>
-                    <p>Conteúdo estratégico para engajar seu público</p>
-                </a>
-            </div>
+            <div class="cards-container">
+                
+                <!-- Semântica: Um card de serviço funciona bem como um <article> -->
+                <article class="service-card">
+                    <a href="/nope/page-3/page-3.html" class="card-link">
+                        <div class="icon-box">
+                            <!-- CORREÇÃO AQUI: Adicionado style="margin-left: 15px;" para centralizar o ícone visualmente -->
+                            <img src="/page-1/src/bt-identidade-visual.png" alt="Ícone de Identidade Visual" loading="lazy" style="margin-left: 50px;">
+                        </div>
+                        <h3>Identidade Visual</h3>
+                        <p>Criação de logos e marcas memoráveis</p>
+                    </a>
+                </article>
 
-            <div class="service-card">
-                <a href="/nope/page-3/page-3.html" class="card-link">
-                    <div class="icon-box">
-                        <img src="src/bt-Marketing-Estratégico.png" alt="Marketing">
-                    </div>
-                    <h3>Marketing Estratégico</h3>
-                    <p>Campanhas que geram resultado</p>
-                </a>
-            </div>
+                <article class="service-card">
+                    <a href="/nope/page-3/page-3.html" class="card-link">
+                        <div class="icon-box">
+                            <img src="/page-1/src/bt-Gestão-de-Redes-Sociais.png" alt="Ícone de Gestão de Redes Sociais" loading="lazy">
+                        </div>
+                        <h3>Gestão de Redes Sociais</h3>
+                        <p>Conteúdo estratégico para engajar seu público</p>
+                    </a>
+                </article>
 
-        </div> </section>
+                <article class="service-card">
+                    <a href="/nope/page-3/page-3.html" class="card-link">
+                        <div class="icon-box">
+                            <img src="/page-1/src/bt-Marketing-Estratégico.png" alt="Ícone de Marketing Estratégico" loading="lazy">
+                        </div>
+                        <h3>Marketing Estratégico</h3>
+                        <p>Campanhas que geram resultado</p>
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
 
 </body>
 </html>
