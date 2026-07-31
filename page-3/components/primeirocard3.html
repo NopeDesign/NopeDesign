@@ -1,75 +1,87 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page - NOPE</title>
+    <meta name="description" content="Serviços da NOPE Design para o seu anúncio: artes estáticas (formatos 1:1 e 1.91:1), vídeos curtos (9:16) e gerenciamento completo de redes sociais.">
+    <title>Nossos Serviços | Nope Design</title>
 
-    <link rel="stylesheet" href="css/primeirocard3.css">
+    <!-- Fontes (com Preconnect para carregamento mais rápido) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/primeirocard3.css">
 </head>
 <body>
 
-<section class="services-section">
-    <h2 class="main-title">Nossos Serviços</h2>
-    <div class="glow-line"></div>
-    <p class="main-subtitle">Soluções personalizadas para transformar sua marca.</p>
+    <!-- Seção de Serviços -->
+    <section class="services-section" aria-labelledby="services-title">
+        
+        <!-- Cabeçalho da Seção -->
+        <header class="section-header">
+            <h2 id="services-title" class="main-title">Nossos Serviços</h2>
+            <div class="glow-line" aria-hidden="true"></div>
+            <p class="main-subtitle">Soluções personalizadas para transformar sua marca.</p>
+        </header>
 
-    <div class="cards-container">
+        <!-- Container dos Cards de Serviço -->
+        <div class="cards-container">
 
-        <!-- Card 1 -->
-        <a href="https://wa.me/5511972527752?text=Oi!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Artes%20Estáticas." class="service-card">
-            <div class="icon-box">
-                <img src="/nope/page-3/src/arte-estatica.png" alt="Arte Estática">
-            </div>
-
-            <h3>Artes Estáticas</h3>
-
-            <div class="price-container">
-                <div class="unit-price">
-                    1 Unidade: <span>R$ 35</span>
+            <!-- Card 1: Artes Estáticas -->
+            <a href="https://wa.me/5511972527752?text=Oi!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Artes%20Estáticas." class="service-card" aria-label="Solicitar orçamento para Artes Estáticas no WhatsApp">
+                <div class="icon-box">
+                    <img src="/page-3/src/arte-estatica.png" alt="Ícone representando serviço de artes estáticas para postagens e anúncios corporativos">
                 </div>
-                <div class="price-tag">
-                    Combo 10 artes: R$ 250
+                
+                <h3>Artes Estáticas</h3>
+                
+                <div class="price-container">
+                    <div class="unit-price">
+                        1 Unidade: <span>R$ 35</span>
+                    </div>
+                    <div class="price-tag">
+                        Combo 10 artes: R$ 250
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
 
-        <!-- Card 2 -->
-        <a href="https://wa.me/5511972527752?text=Oi!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Vídeos%20de%201%20minuto." class="service-card">
-            <div class="icon-box">
-                <img src="/nope/page-3/src/video-de-1min.png" alt="Vídeo de 1 minuto">
-            </div>
-
-            <h3>Vídeos de 1 min</h3>
-
-            <div class="price-container">
-                <div class="unit-price">
-                    1 Unidade: <span>R$ 50</span>
+            <!-- Card 2: Vídeos de 1 min -->
+            <a href="https://wa.me/5511972527752?text=Oi!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Vídeos%20de%201%20minuto." class="service-card" aria-label="Solicitar orçamento para Vídeos de 1 minuto no WhatsApp">
+                <div class="icon-box">
+                    <img src="/page-3/src/video-de-1min.png" alt="Ícone representando serviço de edição de vídeos curtos no formato vertical">
                 </div>
-                <div class="price-tag">
-                    Combo 10 vídeos: R$ 400
+                
+                <h3>Vídeos de 1 min</h3>
+                
+                <div class="price-container">
+                    <div class="unit-price">
+                        1 Unidade: <span>R$ 50</span>
+                    </div>
+                    <div class="price-tag">
+                        Combo 10 vídeos: R$ 400
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
 
-        <!-- Card 3 -->
-        <a href="https://wa.me/5511972527752?text=Oi!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Gerenciamento%20de%20Redes%20Sociais." class="service-card">
-            <div class="icon-box">
-                <img src="/nope/page-3/src/gerenciamento-redes-sociais.png" alt="Gerenciamento de Redes Sociais">
-            </div>
-
-            <h3>Gerenciamento de Redes Sociais</h3>
-
-            <div class="price-container">
-                <div class="price-tag">
-                    R$ 500 / mês
+            <!-- Card 3: Gerenciamento de Redes Sociais -->
+            <a href="https://wa.me/5511972527752?text=Oi!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20Gerenciamento%20de%20Redes%20Sociais." class="service-card" aria-label="Solicitar orçamento para Gerenciamento de Redes Sociais no WhatsApp">
+                <div class="icon-box">
+                    <img src="/page-3/src/gerenciamento-redes-sociais.png" alt="Ícone representando serviço de gerenciamento estratégico de mídias sociais">
                 </div>
-            </div>
-        </a>
+                
+                <h3>Gerenciamento de Redes Sociais</h3>
+                
+                <div class="price-container">
+                    <div class="price-tag">
+                        R$ 500 / mês
+                    </div>
+                </div>
+            </a>
 
-    </div>
-</section>
+        </div>
+    </section>
 
 </body>
 </html>

@@ -15,8 +15,10 @@
 }
 
 /* --- SEÇÃO PRINCIPAL (Mobile First) --- */
+/* --- SEÇÃO PRINCIPAL (Mobile First) --- */
 .founder-section {
-  padding: 50px 16px; /* Padding lateral menor para aproveitar melhor telas pequenas */
+  background-color: #0A0B14; /* <-- AQUI: Fundo alterado para o tom desejado */
+  padding: 50px 16px; 
   max-width: 100%;
   margin: 0 auto;
   font-family: 'Inter', system-ui, sans-serif;
@@ -120,6 +122,7 @@
   text-align: center; /* Centralizado por padrão no mobile para harmonia visual */
 }
 
+
 .purple-text {
   background: linear-gradient(90deg, var(--brand-blue), var(--brand-purple));
   -webkit-background-clip: text;
@@ -140,10 +143,11 @@
 }
 
 /* --- BREAKPOINT PARA DESKTOP (Mantém a estrutura original expandida) --- */
+/* --- BREAKPOINT PARA DESKTOP (Mantém a estrutura original expandida) --- */
 @media (min-width: 768px) {
   .founder-section {
     padding: 80px 20px;
-    max-width: 950px;
+    max-width: 100%; /* AQUI: Força o fundo a cobrir a tela inteira */
   }
   
   .title {
@@ -158,6 +162,8 @@
     padding: 60px 70px;
     gap: 50px;
     border-radius: 24px;
+    max-width: 950px; /* AQUI: Passamos o limite de tamanho para a caixa do conteúdo */
+    margin: 0 auto; /* Centraliza a caixa no meio da tela */
   }
 
   .founder-card {

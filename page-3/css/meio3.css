@@ -1,50 +1,94 @@
-/* Reset básico */
-* {
+/* =========================================
+   Variáveis de Tema (Design System Básico)
+   ========================================= */
+:root {
+    --font-primary: 'Arial', system-ui, sans-serif;
+    --color-bg-body: #f9f9f9;
+    --color-bg-banner: #1a1a1a; /* Fundo escuro para destacar o texto branco. Altere se necessário */
+    --color-text-banner: #ffffff;
+    
+    --container-max-width: 1000px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    --transition-default: 0.3s ease;
+}
+
+/* =========================================
+   Reset Global
+   ========================================= */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif; /* Use a fonte oficial se tiver */
 }
 
 body {
-    background-color: #f9f9f9;
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-body);
+    -webkit-font-smoothing: antialiased; /* Suaviza as fontes no Mac/iOS */
+    -moz-osx-font-smoothing: grayscale;
 }
 
+/* Define que todas as imagens se adaptem ao contêiner por padrão */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================================
+   Seção: Banner
+   ========================================= */
 .banner {
     width: 100%;
     min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Evita que o braço crie barra de rolagem */
-    padding: 20px;
+    overflow: hidden; /* Corta partes vazadas do celular */
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-bg-banner); 
 }
 
 .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1000px;
+    gap: var(--spacing-xl); /* Espaçamento moderno entre conteúdo e celular */
+    max-width: var(--container-max-width);
     width: 100%;
 }
 
+/* =========================================
+   Conteúdo (Logo e Texto)
+   ========================================= */
 .content {
     flex: 1;
     max-width: 500px;
 }
 
+.logo {
+    margin-bottom: var(--spacing-lg);
+}
+
 .logo img {
-    max-width: 500px;
-    margin-bottom: 30px;
+    max-width: 350px; /* Reduzi levemente o max-width para melhor harmonia, ajuste se preferir maior */
 }
 
 .description {
-    font-size: 1.2rem;
-    color: #ffffff;
-    line-height: 1.4;
+    /* O texto começa em 1rem e cresce até 1.2rem suavemente */
+    font-size: clamp(1rem, 2vw, 1.2rem); 
+    color: var(--color-text-banner);
+    line-height: 1.5;
     font-weight: 400;
+    text-wrap: balance; /* Evita que uma palavra fique "sozinha" na última linha */
 }
 
+/* =========================================
+   Apresentação Visual (Mockup)
+   ========================================= */
 .mockup {
     flex: 1;
     display: flex;
@@ -52,25 +96,35 @@ body {
 }
 
 .mockup img {
-    max-width: 450px; /* Ajuste conforme o tamanho da sua imagem */
-    height: auto;
-    /* Efeito de inclinação se a imagem for reta */
-    transform: rotate(-5deg); 
+    max-width: 450px;
+    transform: rotate(-5deg);
+    transition: transform var(--transition-default);
+    /* Adiciona uma sombra suave e profissional ao PNG do celular */
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4)); 
 }
 
-/* Responsividade para celular */
+/* =========================================
+   Responsividade (Smartphones e Tablets)
+   ========================================= */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
         text-align: center;
+        gap: var(--spacing-lg);
     }
     
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .mockup {
         justify-content: center;
-        margin-top: 40px;
     }
 
     .mockup img {
         max-width: 300px;
+        transform: rotate(0deg); /* Deixa o celular reto no mobile para economizar espaço horizontal */
     }
 }

@@ -1,37 +1,30 @@
 /* ============================================================
+   VARIÁVEIS GLOBAIS (Design System)
+   ============================================================ */
+:root {
+    --nope-black: #050508;
+    --nope-white: #ffffff;
+    --nope-muted: #a1a1aa;
+    --nope-blue-primary: #4f7cff;
+    
+    --card-bg: rgba(18, 18, 26, 0.6);
+    --card-border: rgba(255, 255, 255, 0.1);
+    
+    --transition-smooth: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-bounce: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ============================================================
    CONFIGURAÇÃO GERAL DA SEÇÃO
    ============================================================ */
 .services-section {
-    background-color: #050508; /* Preto profundo oficial da Nope */
-    padding: 20px;
+    background-color: #0A0B14;
+    padding: 40px 20px; 
     text-align: center;
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
+    color: var(--nope-white);
+    font-family: 'Inter', system-ui, sans-serif;
     position: relative;
     overflow: hidden;
-}
-
-.main-title {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-.glow-line {
-    width: 250px;
-    height: 2px;
-    margin: 0 auto 20px auto;
-    background: radial-gradient(circle, #4facfe 0%, rgba(79, 172, 254, 0) 80%);
-    box-shadow: 0px 0px 15px 2px rgba(79, 172, 254, 0.8);
-}
-
-.main-subtitle {
-    color: #a1a1aa; /* Cinza muted */
-    font-size: 18px;
-    margin: 0 auto 60px;
-    max-width: 600px;
-    line-height: 1.6;
 }
 
 /* ============================================================
@@ -44,24 +37,26 @@
     max-width: 1200px;
     margin: 0 auto;
     flex-wrap: wrap;
-    perspective: 1000px; /* Habilita profundidade para os cards */
+    perspective: 1000px; /* Habilita profundidade 3D */
 }
 
 .service-card {
-    background: rgba(18, 18, 26, 0.6); 
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--card-bg); 
+    border: 1px solid var(--card-border);
     border-radius: 20px; 
     padding: 40px 25px;
     width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all var(--transition-smooth);
     position: relative;
-    backdrop-filter: blur(12px); /* Efeito de vidro */
-    text-decoration: none; /* Remove sublinhado para <a> */
-    color: inherit; /* Herda cor do texto */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Suporte para Safari */
+    text-decoration: none;
+    color: inherit;
     cursor: pointer;
+    will-change: transform, border-color, box-shadow; /* Otimização de performance */
 }
 
 /* Brilho azulado nas quinas */
@@ -74,7 +69,7 @@
     z-index: -1;
     border-radius: 21px;
     opacity: 0.5;
-    transition: 0.5s;
+    transition: opacity var(--transition-smooth);
 }
 
 .service-card:hover {
@@ -88,7 +83,7 @@
 }
 
 /* ============================================================
-   ÍCONES E ANIMAÇÃO DA LOGO
+   ÍCONES E ANIMAÇÃO
    ============================================================ */
 .icon-box {
     width: 100%;
@@ -96,14 +91,14 @@
     margin-bottom: 25px;
     display: flex;
     justify-content: center;
-    transition: 0.5s;
+    align-items: center;
 }
 
 .icon-box img {
-    height: 130%;
+    max-height: 130%;
     object-fit: contain;
     filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.3)); 
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform var(--transition-bounce), filter var(--transition-bounce);
 }
 
 .service-card:hover .icon-box img {
@@ -112,20 +107,21 @@
 }
 
 /* ============================================================
-   TEXTOS E LISTA
+   TEXTOS INTERNOS
    ============================================================ */
 .service-card h3 {
     font-size: 22px;
     margin-bottom: 15px;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--nope-white);
+    text-align: center;
 }
 
 .card-list {
     list-style: none;
     padding: 0;
     margin: 0 0 25px 0;
-    color: #d1d1d6;
+    color: var(--nope-muted);
     font-size: 14px;
     line-height: 1.8;
 }
@@ -144,34 +140,34 @@
 
 .unit-price {
     font-size: 12px;
-    color: #a1a1aa;
+    color: var(--nope-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
 }
 
 .unit-price span {
-    color: #ffffff;
+    color: var(--nope-white);
     font-weight: 600;
 }
 
 .price-tag {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 12px 25px;
-    color: #ffffff;
+    color: var(--nope-white);
     font-weight: 700;
     font-size: 16px;
     width: 90%;
-    transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all var(--transition-smooth);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
 .service-card:hover .price-tag {
-    background: #4f7cff; /* Azul da marca */
-    border-color: #4f7cff;
+    background: var(--nope-blue-primary);
+    border-color: var(--nope-blue-primary);
     box-shadow: 0 0 20px rgba(79, 124, 255, 0.5);
     transform: scale(1.05);
 }
