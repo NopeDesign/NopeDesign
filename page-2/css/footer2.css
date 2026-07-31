@@ -1,49 +1,85 @@
-/* 1. Reset padrão */
+/* ============================================================
+   VARIÁVEIS (DESIGN TOKENS)
+   ============================================================ */
+:root {
+    --footer-bg: #000000;
+    --footer-text: #a1a1aa; /* Cinza suave (text-muted), não cansa a vista */
+    --footer-link: #8b5cf6; /* Roxo luminoso para destacar no fundo preto */
+    --footer-link-hover: #a78bfa;
+    --font-main: 'Inter', sans-serif; /* Mesma fonte do restante do site */
+    --transition-speed: 0.3s;
+}
+
+/* ============================================================
+   RESET BÁSICO
+   ============================================================ */
+/* Como esse CSS pode ser importado separadamente, mantemos um reset seguro */
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 2. O Footer - Ajustado para não "comer" o design acima */
+/* ============================================================
+   O FOOTER
+   ============================================================ */
 .main-footer {
-    background-color: #000000;
-    /* O padding-top maior garante que o texto saia da zona de divisão */
-    padding: 100px 20px 60px 20px; 
+    background-color: var(--footer-bg);
+    /* CORREÇÃO AQUI: Reduzimos o padding para tirar o vazio gigante (aprox 32px no topo e base) */
+    padding: 2rem 1.25rem; 
     text-align: center;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: var(--font-main);
     width: 100%;
     display: block;
-    clear: both; /* Garante que nada flutue ao lado dele */
+    clear: both;
+    /* Toque premium: uma linha super sutil separando o footer do resto do site */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
-/* 3. Container do Texto */
+/* ============================================================
+   CONTAINER E TEXTOS
+   ============================================================ */
 .footer-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Espaço entre as linhas */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* 4. Estilo dos Créditos */
 .footer-credits {
-    color: #666666; 
-    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Espaço entre as linhas (aprox 8px) */
+    color: var(--footer-text);
+    font-size: 0.875rem; /* Aprox 14px */
     line-height: 1.6;
 }
 
-.footer-credits p {
+/* Formatando a tag <small> que usamos no HTML semântico */
+.footer-credits small {
+    font-size: inherit;
+    font-weight: 400;
     margin: 0;
 }
 
-/* 5. Link do Designer */
+/* ============================================================
+   LINKS E INTERAÇÕES (HOVER)
+   ============================================================ */
 .designer-name {
-    color: #4B179B;
+    color: var(--footer-link);
     text-decoration: none;
     font-weight: 600;
+    transition: color var(--transition-speed) ease, 
+                text-shadow var(--transition-speed) ease;
 }
 
-.designer-name:hover {
-    text-decoration: underline;
+/* Efeito moderno ao passar o mouse ou focar pelo teclado */
+.designer-name:hover,
+.designer-name:focus-visible {
+    color: var(--footer-link-hover);
+    text-decoration: none; /* Em vez do underline clássico... */
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); /* ...usamos um brilho sofisticado */
+    outline: none;
 }
