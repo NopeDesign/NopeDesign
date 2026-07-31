@@ -1,68 +1,115 @@
-/* Remove o vácuo e aproxima da seção anterior */
+/* =========================================
+   SEÇÃO EMPRESA - VÍDEO E TEXTO
+   Alinhado com o visual Premium e Identidade da Marca
+   ========================================= */
+
+/* Container com o novo efeito de divisão no topo (fundo, borda e brilho) */
 .container-empresa {
   display: flex;
   justify-content: center;
-  /* Diminuímos o primeiro valor (topo) para o card subir */
-  padding: 20px 0 50px 0; 
-  background-color: #0a0b14; 
+  padding: 100px 20px 100px 20px; /* Espaço generoso para separar bem as informações */
+  background: linear-gradient(to bottom, #0d0e14, #050505); /* Gradiente escuro puxado pro azul/roxo */
   width: 100%;
-  /* REMOVEMOS o min-height: 100vh que causava o bug */
+  position: relative;
+  
+  /* A DIVISÓRIA E O BRILHO */
+  border-top: 1px solid rgba(125, 106, 254, 0.15); /* Linha divisória superior */
+  box-shadow: inset 0px 20px 50px -20px rgba(125, 106, 254, 0.1); /* Brilho interno (Glow) 3D */
 }
 
-/* Mantém o vídeo e texto lado a lado */
+/* Mantém o vídeo e texto lado a lado no Desktop */
 .card-empresa {
   display: flex; 
-  flex-direction: row;
-  background-color: #1a1b26; 
-  border-radius: 20px;
+  flex-direction: column; 
+  background: linear-gradient(135deg, #1a1a1f, #121215); 
+  border-radius: 24px; 
   overflow: hidden; 
-  max-width: 1000px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  max-width: 1050px; 
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05); 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(125, 106, 254, 0.03);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  margin-top: 20px; /* Afasta um pouco do topo para o respiro perfeito */
 }
 
-/* Área do vídeo */
+/* Efeito de elevação suave ao passar o mouse */
+.card-empresa:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 8px 20px rgba(125, 106, 254, 0.08); 
+}
+
+/* --- ÁREA DO VÍDEO --- */
 .video-empresa {
   flex: 1;
   line-height: 0;
+  position: relative;
 }
 
-.video-empresa video {
+.video-empresa video, 
+.video-empresa img { 
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Garante que preencha o espaço sem sobrar bordas */
+  min-height: 280px; 
+  object-fit: cover; 
   display: block;
 }
 
-/* Área do texto */
+/* --- ÁREA DO TEXTO --- */
 .conteudo-empresa {
   flex: 1;
-  padding: 40px;
-  color: white;
+  padding: 50px 50px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .conteudo-empresa h2 {
-  font-family: sans-serif;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 2.2rem; 
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+  
+  background: linear-gradient(90deg, #5b73fe, #9f61fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .conteudo-empresa p {
-  font-family: sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #ccc;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.1rem; 
+  line-height: 1.8;
+  color: #a3a3a3; 
+  margin: 0;
 }
 
-/* Ajuste para celular */
-@media (max-width: 768px) {
+/* --- AJUSTES RESPONSIVOS --- */
+@media (min-width: 800px) {
   .card-empresa {
-    flex-direction: column;
+    flex-direction: row;
   }
-  .video-empresa {
-    height: 250px;
+
+  /* Linha divisória sutil entre vídeo e texto no desktop */
+  .video-empresa::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.08), transparent);
+  }
+}
+
+/* Ajustes finais para celular */
+@media (max-width: 799px) {
+  .conteudo-empresa {
+    padding: 40px 30px;
+    text-align: center; 
+  }
+  
+  .conteudo-empresa h2 {
+    font-size: 1.8rem;
   }
 }
