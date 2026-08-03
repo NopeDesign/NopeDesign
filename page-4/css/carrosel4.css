@@ -1,91 +1,162 @@
+/* =========================================
+   VARIÁVEIS DE COR E TEMA
+   ========================================= */
+:root {
+    --bg-color: #0A0B14; /* Cor definitiva aplicada aqui */
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --accent-color: #4facfe;
+    --text-main: #ffffff;
+    --text-muted: #aaaaaa;
+}
+
+/* =========================================
+   RESET E LAYOUT GERAL
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+/* O SEGREDO AQUI: !important para forçar a cor e ignorar o topo4.css */
 body {
-    background-color: #05050a; /* Fundo bem escuro */
-    color: white;
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 20px;
+    background-color: var(--bg-color) !important;
 }
 
 .portfolio {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
+    padding: 40px 20px 80px; /* Espaçamento interno para não colar nas bordas */
 }
 
-h2 { font-size: 2.5rem; margin-bottom: 40px; color: #fff; }
+h2 { 
+    font-size: clamp(2rem, 5vw, 2.5rem); /* Cresce e diminui conforme a tela */
+    margin-bottom: 40px; 
+    color: var(--text-main); 
+}
 
-/* Grid: 4 colunas por 2 linhas */
+/* =========================================
+   GRID RESPONSIVO
+   ========================================= */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
-    grid-template-rows: repeat(2, auto);    /* 2 linhas */
-    gap: 20px;
+    gap: 24px;
     margin-bottom: 40px;
+    
+    /* Padrão Mobile: 1 coluna */
+    grid-template-columns: 1fr; 
 }
 
+/* Tablet: 2 colunas */
+@media (min-width: 600px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop: 4 colunas */
+@media (min-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* =========================================
+   CARTÕES DE PROJETO
+   ========================================= */
 .card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 15px;
     padding: 15px;
-    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Faz o conteúdo fluir de cima para baixo */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-10px);
-    border-color: #4facfe; /* Cor de destaque neon */
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 20px rgba(79, 172, 254, 0.15); /* Brilho neon leve */
 }
 
 .card img {
     width: 100%;
     border-radius: 10px;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/9; /* Proporção ideal, mas pode ser trocada para 1:1 ou 9:16 se necessário */
     object-fit: cover;
 }
 
-.card h3 { margin: 15px 0 5px; font-size: 1.2rem; }
-.card p { color: #aaa; font-size: 0.9rem; margin-bottom: 15px; }
+.card h3 { 
+    margin: 15px 0 5px; 
+    font-size: 1.2rem; 
+    color: var(--text-main);
+}
 
+.card p { 
+    color: var(--text-muted); 
+    font-size: 0.9rem; 
+    margin-bottom: 20px; 
+    flex-grow: 1; /* SEGREDINHO: Empurra o botão sempre para o fundo do cartão */
+}
+
+/* =========================================
+   BOTÕES DO PROJETO
+   ========================================= */
 .btn-projeto {
     display: inline-block;
     padding: 8px 20px;
     background: transparent;
-    border: 1px solid #4facfe;
-    color: #4facfe;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
     text-decoration: none;
     border-radius: 20px;
     transition: 0.3s;
+    font-weight: 500;
+    align-self: center; /* Mantém o botão centralizado */
 }
 
 .btn-projeto:hover {
-    background: #4facfe;
+    background: var(--accent-color);
     color: #000;
 }
 
-/* Estilo da Paginação */
+/* =========================================
+   PAGINAÇÃO
+   ========================================= */
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap; /* Evita que os botões vazem da tela no celular */
 }
 
-.pagination button {
+.pagination button, 
+.btn-paginate {
     background: transparent;
-    border: 1px solid #333;
-    color: white;
+    border: 1px solid var(--card-border);
+    color: var(--text-main);
     padding: 8px 15px;
     cursor: pointer;
     border-radius: 5px;
+    transition: 0.2s;
+    font-family: inherit;
+}
+
+.pagination button:hover:not(:disabled) {
+    border-color: var(--text-muted);
 }
 
 .pagination button.active {
-    background: #4facfe;
-    border-color: #4facfe;
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #000;
+    font-weight: bold;
 }
 
 .pagination button:disabled {
     opacity: 0.3;
     cursor: not-allowed;
 }
-

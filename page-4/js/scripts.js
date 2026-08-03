@@ -1,86 +1,177 @@
-// 1. Sua lista de projetos
-const projetos = [
-    { titulo: "Uptech", desc: "Identidade Visual", img: "https://via.placeholder.com/300x200" },
-    { titulo: "Prime Fitness", desc: "Social Media", img: "https://via.placeholder.com/300x200" },
-    { titulo: "Casa da Música", desc: "Website", img: "https://via.placeholder.com/300x200" },
-    { titulo: "Alphadot Tech", desc: "Design", img: "https://via.placeholder.com/300x200" },
-    { titulo: "Nexi Finance", desc: "Branding", img: "https://via.placeholder.com/300x200" },
-    { titulo: "Fusion Burger", desc: "Marketing", img: "https://via.placeholder.com/300x200" },
-    { titulo: "Projeto 7", desc: "App", img: "https://via.placeholder.com/300x200" },
-    { titulo: "Projeto 8", desc: "UI/UX", img: "https://via.placeholder.com/300x200" },
-    { titulo: "Projeto 9", desc: "Web", img: "https://via.placeholder.com/300x200" }
+/**
+ * =========================================
+ *  SISTEMA DE PORTFÓLIO E PAGINAÇÃO
+ * =========================================
+ */
+
+// 1. Dados dos Projetos
+const projetosData = [
+    { 
+        titulo: "DC Theodoro", 
+        desc: "Identidade Visual e Social Media", 
+        img: "src/DC-Theodoro.png",
+        link: "https://www.instagram.com/dcteodoroseguros?igsh=eG1laXkzZDh0OGJz"
+    },
+    { 
+        titulo: "BV Pinho", 
+        desc: "Identidade Visual, Triagem de Leads, Captação de Leads e Social Media", 
+        img: "src/BV-PINHO.png",
+        link: "https://www.instagram.com/bv_pinho?igsh=MWZkOXVoZm1tdnFxbw%3D%3D"
+    },
+    { 
+        titulo: "Aguiar Corretora", 
+        desc: "Captação de Leads", 
+        // Não tem img nem link, o código agora vai ignorar essas partes sem quebrar!
+    },
+      { 
+        titulo: "Corretora Caslu", 
+        desc: "Captação de Leads", 
+        // Não tem img nem link, o código agora vai ignorar essas partes sem quebrar!
+    },
+    { 
+        titulo: "Brand Seguros", 
+        desc: "Identidade Visual, Triagem de Leads, Captação de Leads e Social Media", 
+        img: "src/BRAND.png",
+        link: "https://www.instagram.com/brand.seguros?igsh=MWVhdjAyNDl5bzFmZg%3D%3D"
+    },
+    { 
+        titulo: "Corretora LREIS", 
+        desc: "Captação de Leads",
+        img: "src/larissaoreis.png",
+        // Não tem img nem link, o código agora vai ignorar essas partes sem quebrar!
+    },
+    { 
+        titulo: "Templo Ventos de Oya", 
+        desc: "Social media",
+        img: "src/temploventosdeoya.png",
+        link: "https://www.instagram.com/templo_ventos_de_oya?igsh=MWh1dmxxZWZ2d2NsNQ=="
+        // Não tem img nem link, o código agora vai ignorar essas partes sem quebrar!
+    },
+    { 
+        titulo: "Black Rose Mindset", 
+        desc: "Gerenciamento de Tiktok",
+        img: "src/BlackroseMindset.png",  
+        link: "https://www.tiktok.com/@blackrose.mindset"
+        // Não tem img nem link, o código agora vai ignorar essas partes sem quebrar!
+    },
+    // Adicione mais projetos aqui...
 ];
 
-const itensPorPagina = 8;
-let paginaAtual = 1;
+// 2. Classe de Gerenciamento do Portfólio
+class PortfolioManager {
+    constructor(projetos, itensPorPagina = 8) {
+        this.projetos = projetos;
+        this.itensPorPagina = itensPorPagina;
+        this.paginaAtual = 1;
+        this.totalPaginas = Math.ceil(projetos.length / itensPorPagina);
 
-function displayPage(pagina) {
-    const grid = document.getElementById('portfolio-grid');
-    if (!grid) return; // Segurança extra
-
-    grid.innerHTML = ""; 
-    let start = itensPorPagina * (pagina - 1);
-    let end = start + itensPorPagina;
-    let itensExibidos = projetos.slice(start, end);
-
-    itensExibidos.forEach(p => {
-        // Criando o elemento via JS para garantir que o navegador aceite
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-            <img src="${p.img}" alt="${p.titulo}">
-            <h3>${p.titulo}</h3>
-            <p>${p.desc}</p>
-            <a href="#" class="btn-projeto">Ver Projeto</a>
-        `;
-        grid.appendChild(card);
-    });
-
-    setupPagination();
-}
-
-function setupPagination() {
-    const pageNumbers = document.getElementById('page-numbers');
-    if (!pageNumbers) return;
-    
-    pageNumbers.innerHTML = "";
-    let totalPaginas = Math.ceil(projetos.length / itensPorPagina);
-
-    for (let i = 1; i <= totalPaginas; i++) {
-        let btn = document.createElement('button');
-        btn.innerText = i;
-        if (i === paginaAtual) btn.classList.add('active');
-        btn.onclick = () => {
-            paginaAtual = i;
-            displayPage(paginaAtual);
-        };
-        pageNumbers.appendChild(btn);
+        this.grid = document.getElementById('portfolio-grid');
+        this.pageNumbersContainer = document.getElementById('page-numbers');
+        this.btnPrev = document.getElementById('prev');
+        this.btnNext = document.getElementById('next');
     }
 
-    document.getElementById('prev').onclick = () => {
-        if (paginaAtual > 1) { paginaAtual--; displayPage(paginaAtual); }
-    };
-    document.getElementById('next').onclick = () => {
-        let totalPaginas = Math.ceil(projetos.length / itensPorPagina);
-        if (paginaAtual < totalPaginas) { paginaAtual++; displayPage(paginaAtual); }
-    };
+    init() {
+        if (!this.grid) {
+            console.warn("Aviso: Container do portfólio não encontrado na página.");
+            return;
+        }
+
+        this.setupEventListeners();
+        this.displayPage(this.paginaAtual);
+    }
+
+    displayPage(pagina) {
+        this.grid.innerHTML = ""; 
+        const start = this.itensPorPagina * (pagina - 1);
+        const end = start + this.itensPorPagina;
+        const itensExibidos = this.projetos.slice(start, end);
+
+        const fragment = document.createDocumentFragment();
+
+        itensExibidos.forEach(p => {
+            const card = document.createElement('article');
+            card.className = 'card';
+            
+            // VERIFICAÇÃO INTELIGENTE (Renderização Condicional)
+            // Se p.img existir, cria a tag <img>. Se não, devolve vazio ('').
+            const htmlImagem = p.img 
+                ? `<img src="${p.img}" alt="Preview do projeto: ${p.titulo}" loading="lazy">` 
+                : ``;
+
+            // Se p.link existir, cria o botão <a>. Se não, devolve vazio ('').
+            const htmlBotao = p.link 
+                ? `<a href="${p.link}" class="btn-projeto" aria-label="Ver detalhes de ${p.titulo}" target="_blank" rel="noopener noreferrer">Ver Projeto</a>` 
+                : ``;
+
+            // Monta o card apenas com o que existe
+            card.innerHTML = `
+                ${htmlImagem}
+                <h3>${p.titulo}</h3>
+                <p>${p.desc}</p>
+                ${htmlBotao}
+            `;
+            
+            fragment.appendChild(card);
+        });
+
+        this.grid.appendChild(fragment);
+        this.updatePagination();
+    }
+
+    updatePagination() {
+        if (!this.pageNumbersContainer) return;
+        
+        this.pageNumbersContainer.innerHTML = "";
+
+        for (let i = 1; i <= this.totalPaginas; i++) {
+            const btn = document.createElement('button');
+            btn.innerText = i;
+            btn.setAttribute('aria-label', `Ir para a página ${i}`);
+
+            if (i === this.paginaAtual) {
+                btn.classList.add('active');
+                btn.setAttribute('aria-current', 'page');
+            }
+
+            btn.addEventListener('click', () => {
+                this.paginaAtual = i;
+                this.displayPage(this.paginaAtual);
+                this.grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            this.pageNumbersContainer.appendChild(btn);
+        }
+
+        if (this.btnPrev) this.btnPrev.disabled = (this.paginaAtual === 1);
+        if (this.btnNext) this.btnNext.disabled = (this.paginaAtual === this.totalPaginas);
+    }
+
+    setupEventListeners() {
+        if (this.btnPrev) {
+            this.btnPrev.addEventListener('click', () => {
+                if (this.paginaAtual > 1) { 
+                    this.paginaAtual--; 
+                    this.displayPage(this.paginaAtual); 
+                }
+            });
+        }
+
+        if (this.btnNext) {
+            this.btnNext.addEventListener('click', () => {
+                if (this.paginaAtual < this.totalPaginas) { 
+                    this.paginaAtual++; 
+                    this.displayPage(this.paginaAtual); 
+                }
+            });
+        }
+    }
 }
 
-// O SEGREDO: Só roda quando o documento estiver totalmente pronto
+// 3. Inicialização
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Sistema de portfólio iniciado!");
-    displayPage(1);
-});
-
-// No final do seu js/scripts.js
-function iniciarPortfolio() {
-    const grid = document.getElementById('portfolio-grid');
-    if (grid) {
-        displayPage(1);
-    } else {
-        // Se a div ainda não existe (porque o include é lento), tenta de novo em 100ms
-        setTimeout(iniciarPortfolio, 100);
+    if (projetosData.length > 0) {
+        const portfolio = new PortfolioManager(projetosData, 8);
+        portfolio.init();
     }
-}
-
-iniciarPortfolio();
+});

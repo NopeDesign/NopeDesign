@@ -4,6 +4,7 @@ async function loadComponent(id, file) {
     document.getElementById(id).innerHTML = html;
 }
 
-// Corrigido: Caminhos relativos ao page-1.html
-loadComponent('topo4', 'components/topo4.html');
-loadComponent('carrosel4', 'components/carrosel4.html');
+// id = topo4 (bate com seu HTML novo)
+// file = components/topo.html (bate com o nome do arquivo na sua pasta)
+loadComponent('topo4', 'components/topo.html');
+loadComponent('footer', 'components/footer.html');

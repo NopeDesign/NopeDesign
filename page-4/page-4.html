@@ -1,16 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>NOPE | Agência Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Confira o nosso portfólio espacial. Apresentamos nossos melhores trabalhos e projetos criativos.">
+    <meta name="author" content="Seu Nome ou Nome da Empresa">
+    
+    <title>Nosso Portfólio Espacial</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CORREÇÃO AQUI: Mudamos para caminho relativo -->
+    <link rel="stylesheet" href="./css/carrosel4.css">
 </head>
+
 
 <body>
 
     <div id="topo4"></div>
-    <div id="carrosel4"></div>
 
-    <script src="js/include4.js"></script>
-    <script src="js/scripts.js"></script>
+    <main>
+        <section class="portfolio" aria-labelledby="portfolio-title">
+            <h2 id="portfolio-title">Nosso Portfólio</h2>
+            
+            <div class="portfolio-grid" id="portfolio-grid" aria-live="polite">
+                <!-- O conteúdo gerado via JS entrará aqui -->
+            </div>
+
+            <nav class="pagination" id="pagination" aria-label="Navegação do portfólio">
+                <button id="prev" class="btn-paginate" aria-label="Página anterior">&laquo;</button>
+                <div id="page-numbers" class="page-numbers-container" aria-live="polite"></div>
+                <button id="next" class="btn-paginate" aria-label="Próxima página">&raquo;</button>
+            </nav>
+        </section>
+    </main>
+
+    <!-- CORREÇÃO AQUI: Mudamos para caminho relativo -->
+    <script src="./js/include4.js"></script>
+    <script src="./js/scripts.js"></script>
 </body>
+
 </html>
