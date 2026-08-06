@@ -30,22 +30,6 @@ body {
     z-index: 1000;
 }
 
-/* ========================================================================== 
-   3. BRANDING (LOGO)
-   ========================================================================== */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    flex-shrink: 0;
-}
-
-.logo-img {
-    height: 32px;
-    width: auto;
-    display: block;
-}
 
 /* ========================================================================== 
    4. ESTRUTURA DO MENU (DESKTOP) - CORRIGIDA
@@ -84,7 +68,8 @@ body {
    5. BOTÕES E CHAMADAS (CTA)
    ========================================================================== */
 .btn-whatsapp {
-    background: linear-gradient(90deg, #4c6ef5 0%, #6f55ec 100%);
+    /* Ajustado para o Azul Escuro e Claro juntos (removido o roxo) */
+    background: linear-gradient(90deg, #00A3FF 0%, #002D85 100%);
     color: #ffffff;
     padding: 14px 34px;
     border-radius: 100px;
@@ -101,7 +86,8 @@ body {
 
 .btn-whatsapp:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(76, 110, 245, 0.4);
+    /* Sombra ajustada para azul em vez do tom arroxeado */
+    box-shadow: 0 8px 20px rgba(0, 102, 204, 0.4);
 }
 
 /* Oculta o ícone de hambúrguer no Desktop */
@@ -117,6 +103,10 @@ body {
         padding: 15px 40px;
     }
     
+    .logo-img {
+        height: 60px; /* Mantém um tamanho bom no Tablet */
+    }
+
     .nav-links {
         gap: 20px;
     }
@@ -133,6 +123,10 @@ body {
 @media (max-width: 768px) {
     .navbar {
         padding: 15px 24px;
+    }
+
+    .logo-img {
+        height: 55px; /* Tamanho ajustado para celulares normais */
     }
 
     /* Esconde a caixa do menu para mostrar o botão de hambúrguer */
@@ -202,6 +196,6 @@ body {
     }
 
     .logo-img {
-        height: 26px;
+        height: 45px; /* <--- AUMENTADO AQUI para não sumir no celular pequeno */
     }
 }

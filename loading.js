@@ -27,8 +27,8 @@ window.addEventListener('load', () => {
                 
                 // Redireciona EXATAMENTE 1 segundo depois (sincronizado com o CSS)
                 setTimeout(() => {
-                    // ATENÇÃO: Confirme se esse é o caminho certo da sua página!
-                    window.location.href = "page-1/page-1.html"; 
+                    // CORREÇÃO: Caminho relativo ajustado para o GitHub Pages com o ./
+                    window.location.href = "./page-1/page-1.html"; 
                 }, 1000);
 
             }, 600); 

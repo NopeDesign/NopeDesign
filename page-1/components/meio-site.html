@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Seu CSS principal -->
-    <link rel="stylesheet" href="css/meio-1.css">
+    <!-- Boas práticas: Uso do ./ para indicar que a pasta css está no mesmo diretório -->
+    <link rel="stylesheet" href="./css/meio-1.css">
 </head>
 <body>
 
@@ -35,13 +35,16 @@
                            aria-label="Solicitar Orçamento via WhatsApp">
                            Solicitar Orçamento
                         </a>
-                        <a href="/nope/page-4/page-4.html" class="btn btn-secondary">Portfólio</a>
+                        
+                        <!-- Caminho Relativo ajustado: removido o /nope/ -->
+                        <a href="../page-4/page-4.html" class="btn btn-secondary">Portfólio</a>
                     </div>
                 </div>
 
                 <div class="hero-image">
+                    <!-- Caminho Relativo ajustado com ./ para a imagem -->
                     <!-- Adição de width/height ajuda a evitar o Cumulative Layout Shift (CLS), melhorando o score no Google PageSpeed -->
-                    <img src="src/imagem-central.png" 
+                    <img src="./src/imagem-central.png" 
                          alt="Ilustração 3D com o logotipo da agência NOPE" 
                          width="600" 
                          height="600">

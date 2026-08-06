@@ -84,7 +84,8 @@ body {
    5. BOTÕES E CHAMADAS (CTA)
    ========================================================================== */
 .btn-whatsapp {
-    background: linear-gradient(90deg, #4c6ef5 0%, #6f55ec 100%);
+    /* Novo Azul da Marca (Gradient de #007BFF para #0062CC) */
+    background: linear-gradient(90deg, #007BFF 0%, #0062CC 100%);
     color: #ffffff;
     padding: 14px 34px;
     border-radius: 100px;
@@ -101,7 +102,8 @@ body {
 
 .btn-whatsapp:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(76, 110, 245, 0.4);
+    /* Sombra ajustada para o novo azul (RGB: 0, 123, 255) */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
 }
 
 /* Oculta o ícone de hambúrguer no Desktop */

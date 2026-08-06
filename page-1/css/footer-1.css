@@ -4,8 +4,8 @@
 :root {
     --footer-bg: #000000;
     --footer-text: #a1a1aa; /* Cinza suave (text-muted), não cansa a vista */
-    --footer-link: #8b5cf6; /* Roxo luminoso para destacar no fundo preto */
-    --footer-link-hover: #a78bfa;
+    --footer-link: #007BFF; /* Azul luminoso para destacar no fundo preto */
+    --footer-link-hover: #3395FF; /* Azul mais claro para o efeito de hover */
     --font-main: 'Inter', sans-serif; /* Mesma fonte do restante do site */
     --transition-speed: 0.3s;
 }
@@ -80,6 +80,6 @@ body {
 .designer-name:focus-visible {
     color: var(--footer-link-hover);
     text-decoration: none; /* Em vez do underline clássico... */
-    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); /* ...usamos um brilho sofisticado */
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* ...usamos um brilho azul sofisticado */
     outline: none;
 }

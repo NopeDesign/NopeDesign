@@ -9,13 +9,15 @@ const projetosData = [
     { 
         titulo: "DC Theodoro", 
         desc: "Identidade Visual e Social Media", 
-        img: "src/DC-Theodoro.png",
+        // Caminho ajustado com ./
+        img: "./src/DC-Theodoro.png",
         link: "https://www.instagram.com/dcteodoroseguros?igsh=eG1laXkzZDh0OGJz"
     },
     { 
         titulo: "BV Pinho", 
         desc: "Identidade Visual, Triagem de Leads, Captação de Leads e Social Media", 
-        img: "src/BV-PINHO.png",
+        // Caminho ajustado com ./
+        img: "./src/BV-PINHO.png",
         link: "https://www.instagram.com/bv_pinho?igsh=MWZkOXVoZm1tdnFxbw%3D%3D"
     },
     { 
@@ -26,33 +28,30 @@ const projetosData = [
       { 
         titulo: "Corretora Caslu", 
         desc: "Captação de Leads", 
-        // Não tem img nem link, o código agora vai ignorar essas partes sem quebrar!
+        // Caminho ajustado com ./
+        img: "./src/Caslu.png",
+        link: "https://www.instagram.com/corretoracasluseguros?igsh=N3g0enRqMXM3bzJn"
     },
     { 
         titulo: "Brand Seguros", 
         desc: "Identidade Visual, Triagem de Leads, Captação de Leads e Social Media", 
-        img: "src/BRAND.png",
+        // Caminho ajustado com ./
+        img: "./src/BRAND.png",
         link: "https://www.instagram.com/brand.seguros?igsh=MWVhdjAyNDl5bzFmZg%3D%3D"
-    },
-    { 
-        titulo: "Corretora LREIS", 
-        desc: "Captação de Leads",
-        img: "src/larissaoreis.png",
-        // Não tem img nem link, o código agora vai ignorar essas partes sem quebrar!
     },
     { 
         titulo: "Templo Ventos de Oya", 
         desc: "Social media",
-        img: "src/temploventosdeoya.png",
+        // Caminho ajustado com ./
+        img: "./src/temploventosdeoya.png",
         link: "https://www.instagram.com/templo_ventos_de_oya?igsh=MWh1dmxxZWZ2d2NsNQ=="
-        // Não tem img nem link, o código agora vai ignorar essas partes sem quebrar!
     },
     { 
         titulo: "Black Rose Mindset", 
         desc: "Gerenciamento de Tiktok",
-        img: "src/BlackroseMindset.png",  
+        // Caminho ajustado com ./
+        img: "./src/BlackroseMindset.png",  
         link: "https://www.tiktok.com/@blackrose.mindset"
-        // Não tem img nem link, o código agora vai ignorar essas partes sem quebrar!
     },
     // Adicione mais projetos aqui...
 ];

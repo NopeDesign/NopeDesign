@@ -10,7 +10,8 @@
     --text-main: #ffffff;
     --text-muted: #a1a1aa;
     
-    --accent-rgb: 79, 172, 254; 
+    /* Novo Azul da Marca em RGB (0, 123, 255) */
+    --accent-rgb: 0, 123, 255; 
     --accent-color: rgb(var(--accent-rgb));
     
     --font-main: 'Inter', sans-serif;

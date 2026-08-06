@@ -15,8 +15,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Boas práticas: Estrutura de pastas mais padronizada -->
-    <link rel="stylesheet" href="css/cards-1.css">
+    <!-- Boas práticas: Uso do ./ para indicar que a pasta css está no mesmo diretório -->
+    <link rel="stylesheet" href="./css/cards-1.css">
 </head>
 <body>
 
@@ -34,10 +34,11 @@
                 
                 <!-- Semântica: Um card de serviço funciona bem como um <article> -->
                 <article class="service-card">
-                    <a href="/nope/page-3/page-3.html" class="card-link">
+                    <!-- Caminho Relativo para a página 3 -->
+                    <a href="../page-3/page-3.html" class="card-link">
                         <div class="icon-box">
-                            <!-- CORREÇÃO AQUI: Adicionado style="margin-left: 15px;" para centralizar o ícone visualmente -->
-                            <img src="/page-1/src/bt-identidade-visual.png" alt="Ícone de Identidade Visual" loading="lazy" style="margin-left: 50px;">
+                            <!-- Caminho Relativo para a imagem -->
+                            <img src="../page-1/src/bt-identidade-visual.png" alt="Ícone de Identidade Visual" loading="lazy" style="margin-left: 50px;">
                         </div>
                         <h3>Identidade Visual</h3>
                         <p>Criação de logos e marcas memoráveis</p>
@@ -45,9 +46,10 @@
                 </article>
 
                 <article class="service-card">
-                    <a href="/nope/page-3/page-3.html" class="card-link">
+                    <a href="../page-3/page-3.html" class="card-link">
                         <div class="icon-box">
-                            <img src="/page-1/src/bt-Gestão-de-Redes-Sociais.png" alt="Ícone de Gestão de Redes Sociais" loading="lazy">
+                            <!-- ⚠️ DICA: Renomeie o arquivo no seu PC para "bt-gestao-de-redes-sociais.png" (sem acento) -->
+                            <img src="../page-1/src/bt-Gestão-de-Redes-Sociais.png" alt="Ícone de Gestão de Redes Sociais" loading="lazy">
                         </div>
                         <h3>Gestão de Redes Sociais</h3>
                         <p>Conteúdo estratégico para engajar seu público</p>
@@ -55,9 +57,10 @@
                 </article>
 
                 <article class="service-card">
-                    <a href="/nope/page-3/page-3.html" class="card-link">
+                    <a href="../page-3/page-3.html" class="card-link">
                         <div class="icon-box">
-                            <img src="/page-1/src/bt-Marketing-Estratégico.png" alt="Ícone de Marketing Estratégico" loading="lazy">
+                            <!-- ⚠️ DICA: Renomeie o arquivo no seu PC para "bt-marketing-estrategico.png" (sem acento) -->
+                            <img src="../page-1/src/bt-Marketing-Estratégico.png" alt="Ícone de Marketing Estratégico" loading="lazy">
                         </div>
                         <h3>Marketing Estratégico</h3>
                         <p>Campanhas que geram resultado</p>

@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Confira o nosso portfólio espacial. Apresentamos nossos melhores trabalhos e projetos criativos.">
-    <meta name="author" content="Seu Nome ou Nome da Empresa">
+    <meta name="description" content="Confira o nosso portfólio. Apresentamos nossos melhores trabalhos, projetos criativos e resultados gerados pela NOPE Design.">
+    <meta name="author" content="NOPE Design">
     
-    <title>Nosso Portfólio Espacial</title>
+    <title>Nosso Portfólio | NOPE Design</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- CORREÇÃO AQUI: Mudamos para caminho relativo -->
+    <!-- Excelente! O caminho relativo já está correto -->
     <link rel="stylesheet" href="./css/carrosel4.css">
 </head>
 
-
 <body>
 
+    <!-- Container para o Menu (Topo) -->
     <div id="topo4"></div>
 
     <main>
@@ -26,7 +26,7 @@
             <h2 id="portfolio-title">Nosso Portfólio</h2>
             
             <div class="portfolio-grid" id="portfolio-grid" aria-live="polite">
-                <!-- O conteúdo gerado via JS entrará aqui -->
+                <!-- O conteúdo gerado via JS (scripts.js) entrará aqui -->
             </div>
 
             <nav class="pagination" id="pagination" aria-label="Navegação do portfólio">
@@ -37,9 +37,11 @@
         </section>
     </main>
 
-    <!-- CORREÇÃO AQUI: Mudamos para caminho relativo -->
+    <!-- ADICIONADO: Faltava a div para o script conseguir injetar o rodapé! -->
+    <div id="footer"></div>
+
+    <!-- Excelente! Os caminhos relativos dos scripts também estão corretos -->
     <script src="./js/include4.js"></script>
     <script src="./js/scripts.js"></script>
 </body>
-
 </html>

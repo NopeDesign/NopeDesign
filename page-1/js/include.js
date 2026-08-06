@@ -4,8 +4,8 @@ async function loadComponent(id, file) {
     document.getElementById(id).innerHTML = html;
 }
 
-// Corrigido: Caminhos relativos ao page-1.html
-loadComponent('topo', 'components/topo-site.html');
-loadComponent('meio', 'components/meio-site.html');
-loadComponent('cards', 'components/cards-site.html');
-loadComponent('footer', 'components/footer-site.html');
+// Corrigido para o GitHub Pages: uso do ./ para forçar o caminho relativo
+loadComponent('topo', './components/topo-site.html');
+loadComponent('meio', './components/meio-site.html');
+loadComponent('cards', './components/cards-site.html');
+loadComponent('footer', './components/footer-site.html');

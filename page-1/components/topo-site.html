@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- CSS Embutido para forçar o navegador a ler as regras atualizadas (Ignorando Cache) -->
+    <!-- CSS Embutido para forçar o navegador a ler as regras atualizadas -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background: #000000; color: #ffffff; overflow-x: hidden; }
@@ -22,7 +22,10 @@
         }
 
         .logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-        .logo-img { height: 32px; width: auto; display: block; }
+        
+        /* === LOGO AUMENTADA DRASTICAMENTE PARA DESKTOP === */
+        /* Se ainda ficar pequena, pode mudar esse 120px para 150px ou 180px */
+        .logo-img { height: 50px; width: auto; display: block; max-height: none; }
 
         /* MENU DESKTOP */
         .nav-menu { display: flex; align-items: center; flex: 1; }
@@ -32,9 +35,17 @@
         .nav-links li a:hover { color: #ffffff; }
 
         .btn-whatsapp {
-            background: linear-gradient(90deg, #4c6ef5 0%, #6f55ec 100%); color: #ffffff;
-            padding: 14px 34px; border-radius: 100px; text-decoration: none; font-size: 15px;
-            font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap; flex-shrink: 0;
+            background: linear-gradient(90deg, #00A3FF 0%, #002D85 100%); 
+            color: #ffffff;
+            padding: 14px 34px; 
+            border-radius: 100px; 
+            text-decoration: none; 
+            font-size: 15px;
+            font-weight: 600; 
+            display: inline-flex; 
+            align-items: center; 
+            white-space: nowrap; 
+            flex-shrink: 0;
         }
 
         .menu-toggle { display: none; }
@@ -42,6 +53,9 @@
         /* RESPONSIVO MOBILE */
         @media (max-width: 768px) {
             .navbar { padding: 15px 24px; }
+            
+            /* === LOGO AJUSTADA PARA O CELULAR === */
+            .logo-img { height: 80px; }
             
             /* Esconde o menu original */
             .nav-menu { display: none !important; }
@@ -52,7 +66,7 @@
             }
             .menu-toggle span { width: 28px; height: 2px; background-color: #ffffff; transition: 0.3s; }
 
-            /* A MÁGICA: QUANDO CLICA E ADICIONA A CLASSE 'menu-aberto' */
+            /* A MÁGICA DO MENU MOBILE */
             .navbar.menu-aberto .nav-menu {
                 display: flex !important;
                 flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%;
@@ -68,30 +82,31 @@
 <body>
 
     <header class="navbar">
-        <a href="/page-1/page-1.html" class="logo">
-            <img src="src/logo.png" alt="Logo NOPE" class="logo-img">
+        <!-- Caminho ajustado com ./ -->
+        <a href="./page-1/page-1.html" class="logo">
+            <!-- Caminho ajustado com ./ -->
+            <img src="./src/logo.png" alt="Logo NOPE" class="logo-img">
         </a>
 
         <div class="nav-menu">
             <nav>
                 <ul class="nav-links">
-                    <li><a href="/page-1/page-1.html">Início</a></li>
-                    <li><a href="/page-2/page-2.html">Quem Somos</a></li>
-                    <li><a href="/page-3/page-3.html">Serviços</a></li>
-                    <li><a href="/page-4/page-4.html">Portfólio</a></li>
+                    <!-- Caminhos ajustados com ./ -->
+                    <li><a href="./page-1/page-1.html">Início</a></li>
+                    <li><a href="./page-2/page-2.html">Quem Somos</a></li>
+                    <li><a href="./page-3/page-3.html">Serviços</a></li>
+                    <li><a href="./page-4/page-4.html">Portfólio</a></li>
                 </ul>
             </nav>
 
-        <a <a href="https://wa.me/5511972527752?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas" 
-            class="btn-whatsapp" 
-            target="_blank" 
-            rel="noopener noreferrer">
-            Falar no WhatsApp
-        </a>
+            <a href="https://wa.me/5511972527752?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas" 
+                class="btn-whatsapp" 
+                target="_blank" 
+                rel="noopener noreferrer">
+                Falar no WhatsApp
+            </a>
         </div>
 
-        <!-- O TRUQUE DEFINITIVO: O 'onclick' direto no botão. 
-             Se o usuário clicar, ele acha a tag pai (.navbar) e adiciona a classe. Impossível falhar. -->
         <div class="menu-toggle" aria-label="Abrir menu" role="button" onclick="this.closest('.navbar').classList.toggle('menu-aberto')">
             <span></span>
             <span></span>

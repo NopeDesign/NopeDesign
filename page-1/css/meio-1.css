@@ -8,17 +8,19 @@
     --clr-bg: #0A0B14;
     --clr-text-main: #ffffff;
     --clr-text-muted: #e0e0e0;
-    --clr-primary: #3b66f5;
-    --clr-primary-dark: #2a4ac4;
-    --clr-secondary: #6e40ef;
+    
+    /* Novos tons de AZUL PURO da marca */
+    --clr-primary: #007BFF;       /* Azul principal vibrante */
+    --clr-primary-dark: #0056B3;  /* Azul mais escuro para contrastes */
+    --clr-secondary: #0062CC;     /* Azul intermediário para o gradiente */
     
     /* Gradientes */
     --grad-primary: linear-gradient(90deg, var(--clr-primary) 0%, var(--clr-secondary) 100%);
     
-    /* Sombras */
-    --shadow-btn: 0 10px 25px rgba(59, 102, 245, 0.3);
-    --shadow-btn-hover: 0 15px 35px rgba(59, 102, 245, 0.5);
-    --shadow-image: 0 0 50px rgba(59, 102, 245, 0.15);
+    /* Sombras ajustadas para o novo azul (RGB: 0, 123, 255) */
+    --shadow-btn: 0 10px 25px rgba(0, 123, 255, 0.3);
+    --shadow-btn-hover: 0 15px 35px rgba(0, 123, 255, 0.5);
+    --shadow-image: 0 0 50px rgba(0, 123, 255, 0.15);
 
     /* Transições */
     --transition-base: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -76,7 +78,6 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: clamp(2rem, 5vw, 4rem); /* Espaço responsivo entre texto e imagem */
-    /* Removido o translate fixo, grid/flex centralizam de forma mais segura */
 }
 
 /* ==========================================================================
@@ -183,7 +184,8 @@ body {
     }
     50% {
         transform: translateY(-15px) scale(1.02);
-        filter: drop-shadow(0 0 70px rgba(59, 102, 245, 0.3)) brightness(1.1);
+        /* Alterado também o brilho azul da animação para manter a cor (RGB: 0, 123, 255) */
+        filter: drop-shadow(0 0 70px rgba(0, 123, 255, 0.3)) brightness(1.1);
     }
 }
 
